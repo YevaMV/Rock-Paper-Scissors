@@ -10,15 +10,26 @@
   }
 
 body {
-    background-color: rgb(204, 204, 255);
     font-family: 'Signika', sans-serif;
     
 }
 
+#img-block {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px;
+}
+
+#img-block div img {
+    width: 150px;
+}
+
 h1 {
     margin: 30px;
-    font-size: 80px;
-    color: rgb(255, 128, 0)
+    font-size: 60px;
+    color: rgb(226, 18, 44)
 }
 
 .start-game-btn {
@@ -28,6 +39,10 @@ h1 {
     border-radius: 5px;
 }
 
+.start-game-btn:hover {
+    background-color:rgb(25, 171, 160);
+}
+
 .choice {
     margin-bottom: 30px;
     font-size: 40px;
@@ -35,7 +50,7 @@ h1 {
 }
 
 #game-result {
-    font-size: 30px;
+    font-size: 50px;
     font-family: 'Signika', sans-serif;
     color: red;
     font-weight: 700;

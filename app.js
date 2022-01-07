@@ -1,6 +1,8 @@
 const takePickbtn = document.getElementById('take-pick-btn'); 
 const startGamebtn = document.getElementById('start-game-btn');
-
+const playerChoices = document.querySelectorAll('.img-link');
+let playerChoice;
+let computerSelection;
 
 const ROCK = 'ROCK';
 const PAPER = 'PAPER';
@@ -9,24 +11,20 @@ const DEFAULT_USER_CHOICE = ROCK;
 const RESULT_DRAW = 'DRAW';
 const RESULT_PLAYER_WINS = 'PLAYER_WINS';
 const RESULT_COMPUTER_WINS = 'COMPUTER_WINS';
-let playerSelection;
-let computerSelection;
 
 
-function getPlayerChoice() {
-  const selection = prompt(`${ROCK}, ${PAPER} or ${SCISSORS}?`, '').toUpperCase();
-  if (
-    selection !== ROCK &&
-    selection !== PAPER &&
-    selection !== SCISSORS
-  ) {
-    document.getElementById('user-choice').innerHTML = `Invalid choice! We chose ${DEFAULT_USER_CHOICE} for you!`;
-    return DEFAULT_USER_CHOICE;
-  }
-  document.getElementById('user-choice').innerHTML = `Your choice is ${selection}!!!`;
-  return selection;
-
-};
+playerChoices.forEach(function(choice){
+  choice.addEventListener('click', function(e){
+      playerChoice = (e.target.id).toUpperCase();
+     if (playerChoice === ROCK){
+        document.getElementById('user-choice').innerHTML = 'Your choice is ROCK!!!';
+      } else if (playerChoice === PAPER){
+        document.getElementById('user-choice').innerHTML = 'Your choice is Paper!!!';
+      } else
+      document.getElementById('user-choice').innerHTML = 'Your choice is Scissors!!!';
+    
+  })
+});
 
 function getComputerChoice() {
     const randomValue = Math.random();
@@ -62,15 +60,9 @@ function getComputerChoice() {
     }
 };
 
-
-takePickbtn.addEventListener('click', function() {
-     playerSelection = getPlayerChoice();
-     return playerSelection;
-});
-
 startGamebtn.addEventListener('click', function() {
     computerSelection = getComputerChoice();
-    let winner = getWinner(computerSelection, playerSelection);
+    let winner = getWinner(computerSelection, playerChoice);
     return winner;
 });
 
