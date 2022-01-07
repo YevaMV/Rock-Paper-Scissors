@@ -33,3 +33,10 @@ h1 {
     font-size: 40px;
     color: rgb(255, 153, 51);
 }
+
+#game-result {
+    font-size: 30px;
+    font-family: 'Signika', sans-serif;
+    color: red;
+    font-weight: 700;
+}
