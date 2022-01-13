@@ -45,8 +45,19 @@ h1 {
 
 .choice {
     margin-bottom: 30px;
-    font-size: 40px;
+    font-size: 30px;
     color: rgb(255, 153, 51);
+}
+
+#game-score{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 30px;
+}
+
+.score-css {
+    font-size: 30px;
 }
 
 #game-result {
