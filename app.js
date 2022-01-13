@@ -1,8 +1,12 @@
 const takePickbtn = document.getElementById('take-pick-btn'); 
 const startGamebtn = document.getElementById('start-game-btn');
 const playerChoices = document.querySelectorAll('.img-link');
-let playerChoice;
+const playerScoreResult = document.getElementById('player-score');
+const computerScoreResult = document.getElementById('computer-score');
+let playerSelection;
 let computerSelection;
+let playerScore = 0;
+let computerScore = 0;
 
 const ROCK = 'ROCK';
 const PAPER = 'PAPER';
@@ -15,13 +19,13 @@ const RESULT_COMPUTER_WINS = 'COMPUTER_WINS';
 
 playerChoices.forEach(function(choice){
   choice.addEventListener('click', function(e){
-      playerChoice = (e.target.id).toUpperCase();
-     if (playerChoice === ROCK){
+      playerSelection = (e.target.id).toUpperCase();
+     if (playerSelection === ROCK){
         document.getElementById('user-choice').innerHTML = 'Your choice is ROCK!!!';
-      } else if (playerChoice === PAPER){
+      } else if (playerSelection === PAPER){
         document.getElementById('user-choice').innerHTML = 'Your choice is Paper!!!';
       } else
-      document.getElementById('user-choice').innerHTML = 'Your choice is Scissors!!!';
+      document.getElementById('user-choice').innerHTML = 'Your choice is SCISSORS!!!';
     
   })
 });
@@ -53,16 +57,22 @@ function getComputerChoice() {
       (cChoice === SCISSORS && pChoice === ROCK)
     ) {
       document.getElementById('game-result').innerHTML = 'You Win!!!';
+      playerScore = playerScore + 1;
+      playerScoreResult.innerHTML = playerScore;
       return RESULT_PLAYER_WINS;
     } else {
       document.getElementById('game-result').innerHTML = 'You Lose!!!';
+      computerScore = computerScore + 1;
+      computerScoreResult.innerHTML = computerScore;
       return RESULT_COMPUTER_WINS
-    }
+    }; 
 };
+
+
 
 startGamebtn.addEventListener('click', function() {
     computerSelection = getComputerChoice();
-    let winner = getWinner(computerSelection, playerChoice);
+    let winner = getWinner(computerSelection, playerSelection);
     return winner;
 });
 
