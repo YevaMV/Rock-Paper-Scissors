@@ -22,32 +22,26 @@ playerChoices.forEach(function(choice){
   choice.addEventListener('click', function(e){
     playerSelection = (e.target.id).toUpperCase();
     if (playerSelection === ROCK){
-       document.getElementById('user-choice').innerHTML = 'Your choice is ROCK!!!';
+       document.getElementById('user-choice').innerHTML = 'Your choice is ROCK <i class="far fa-hand-rock"></i>';
     } else if (playerSelection === PAPER){
-       document.getElementById('user-choice').innerHTML = 'Your choice is Paper!!!';
+       document.getElementById('user-choice').innerHTML = 'Your choice is Paper <i class="far fa-hand-paper"></i>';
     } else {
-      document.getElementById('user-choice').innerHTML = 'Your choice is SCISSORS!!!';
+      document.getElementById('user-choice').innerHTML = 'Your choice is SCISSORS <i class="far fa-hand-scissors"></i>';
     };
-  });
-  if(playerChoices.clicked === false){
-    document.getElementById('user-choice').innerHTML = 'ksjajkhjAD!';
-  }
+  }); 
 });
 
 function getComputerChoice() {
     const randomValue = Math.random();
     if (randomValue < 0.34) {
-        document.getElementById('computer-choice').innerHTML = `Player's choice is ${ROCK}!!!`;
+        document.getElementById('computer-choice').innerHTML = `Player's choice is ${ROCK} <i class="far fa-hand-rock"></i>`;
         return ROCK;
-      
     } else if (randomValue < 0.67) {
-        document.getElementById('computer-choice').innerHTML = `Player's choice is ${PAPER}!!!`;
+        document.getElementById('computer-choice').innerHTML = `Player's choice is ${PAPER} <i class="far fa-hand-paper"></i>`;
         return PAPER;
-     
     } else {
-        document.getElementById('computer-choice').innerHTML = `Player's choice is ${SCISSORS}!!!`;
-        return SCISSORS;
-       
+        document.getElementById('computer-choice').innerHTML = `Player's choice is ${SCISSORS} <i class="far fa-hand-scissors"></i>`;
+        return SCISSORS;  
     }
 };
 
@@ -74,28 +68,25 @@ function getComputerChoice() {
             return false;
           });
         } 
-      
-    } else {
-      document.getElementById('game-result').innerHTML = 'You Lose!!!';
-      computerScore = computerScore + 1;
-      computerScoreResult.innerHTML = computerScore;
-      if(computerScore === 3 && playerScore < 3) {
-        document.getElementById('win-window').style.display = 'block';
-        document.getElementById('winner').innerHTML = 'Game Ended, You Lose!!!';
-        document.getElementById('win-player-score').innerHTML = playerScore;
-        document.getElementById('win-computer-score').innerHTML = computerScore;
-        document.getElementById('winner').innerHTML = 'Game Over, You Lose!!!';
-        document.querySelector('.restart-btn').addEventListener('click', function(){
-          document.getElementById('win-window').style.display = 'hidden';
-          window.location.reload();
-          return false;
-        });
-      };
-    }; 
+      } else {
+        document.getElementById('game-result').innerHTML = 'You Lose!!!';
+        computerScore = computerScore + 1;
+        computerScoreResult.innerHTML = computerScore;
+        if(computerScore === 3 && playerScore < 3) {
+          document.getElementById('win-window').style.display = 'block';
+          document.getElementById('winner').innerHTML = 'Game Ended, You Lose!!!';
+          document.getElementById('win-player-score').innerHTML = playerScore;
+          document.getElementById('win-computer-score').innerHTML = computerScore;
+          document.getElementById('winner').innerHTML = 'Game Over, You Lose!!!';
+          document.querySelector('.restart-btn').addEventListener('click', function(){
+            document.getElementById('win-window').style.display = 'hidden';
+            window.location.reload();
+            return false;
+          });
+        };
+      }; 
     
-};
-
-
+  };
 
 startGamebtn.addEventListener('click', function() {
     computerSelection = getComputerChoice();
